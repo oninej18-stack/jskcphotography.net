@@ -1,1 +1,446 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JHI SHOOTS KC® | Photography Archive</title>
+<meta name="description" content="An independent photography archive by JHI SHOOTS KC.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --black: #171717;
+  --white: #f4f0e8;
+  --red: #ff4d35;
+  --lime: #c6ff45;
+  --blue: #426bff;
+  --orange: #ff9c32;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Space Mono', monospace;
+  overflow-x: hidden;
+}
+
+header {
+  padding: 22px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #444;
+  gap: 20px;
+}
+
+.logo {
+  font-family: 'Anton', sans-serif;
+  font-size: 27px;
+  letter-spacing: -1px;
+}
+
+.logo span { color: var(--red); }
+
+nav {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 11px;
+}
+
+nav a:hover { color: var(--lime); }
+
+.hero {
+  padding: 85px 6% 55px;
+  position: relative;
+}
+
+.tag {
+  color: var(--lime);
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(65px, 13vw, 165px);
+  line-height: .87;
+  letter-spacing: -4px;
+  margin: 30px 0;
+}
+
+.hero h1 span { color: var(--red); }
+
+.hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 35px;
+}
+
+.hero-bottom p {
+  font-size: 11px;
+  line-height: 1.9;
+  max-width: 360px;
+}
+
+.stamp {
+  background: var(--lime);
+  color: var(--black);
+  padding: 12px 18px;
+  transform: rotate(-5deg);
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.marquee {
+  background: var(--red);
+  color: var(--black);
+  padding: 14px 0;
+  font-family: 'Anton', sans-serif;
+  font-size: 23px;
+  text-align: center;
+  letter-spacing: 3px;
+  transform: rotate(-1deg) scale(1.02);
+  margin: 20px 0 65px;
+}
+
+.section {
+  padding: 20px 5% 80px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #555;
+  padding-bottom: 15px;
+  gap: 15px;
+}
+
+.section-heading h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(35px, 6vw, 55px);
+}
+
+.section-heading span {
+  color: var(--lime);
+  font-size: 10px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.photo {
+  min-height: 330px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: end;
+  padding: 18px;
+  border: 1px dashed rgba(255,255,255,.45);
+  transition: transform .25s;
+}
+
+.photo:hover {
+  transform: rotate(-1deg) scale(1.015);
+}
+
+.photo:nth-child(1) { background: #343434; }
+.photo:nth-child(2) { background: #262626; }
+.photo:nth-child(3) { background: #393939; }
+.photo:nth-child(4) { background: #292929; }
+.photo:nth-child(5) { background: #353535; }
+.photo:nth-child(6) { background: #262626; }
+
+.photo-label {
+  font-family: 'Anton', sans-serif;
+  font-size: 29px;
+  color: var(--white);
+  position: relative;
+  z-index: 2;
+}
+
+.photo small {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  color: var(--lime);
+}
+
+.photo-number {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 12px;
+  color: var(--lime);
+}
+
+.empty {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #777;
+  font-size: 10px;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.note {
+  background: var(--lime);
+  color: var(--black);
+  padding: 40px 6%;
+  margin: 20px 0 75px;
+  transform: rotate(1deg);
+}
+
+.note h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(35px, 7vw, 75px);
+  line-height: .95;
+}
+
+.note p {
+  font-size: 11px;
+  margin-top: 15px;
+  max-width: 450px;
+  line-height: 1.8;
+}
+
+.about {
+  padding: 20px 6% 80px;
+}
+
+.about h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(45px, 9vw, 100px);
+  line-height: .95;
+  margin-bottom: 25px;
+}
+
+.about h2 span { color: var(--red); }
+
+.about p {
+  font-size: 12px;
+  line-height: 2;
+  max-width: 570px;
+  color: #ccc;
+}
+
+.contact {
+  padding: 55px 6%;
+  background: var(--blue);
+  color: white;
+}
+
+.contact h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(50px, 10vw, 110px);
+  line-height: .9;
+}
+
+.contact p {
+  font-size: 11px;
+  margin-top: 25px;
+}
+
+.contact a {
+  display: inline-block;
+  color: var(--black);
+  background: var(--lime);
+  padding: 13px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 11px;
+  margin-top: 25px;
+}
+
+footer {
+  padding: 25px 5%;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  font-size: 9px;
+  color: #aaa;
+}
+
+@media (max-width: 650px) {
+  header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  nav { gap: 16px; }
+
+  .hero { padding-top: 65px; }
+
+  .hero h1 { letter-spacing: -2px; }
+
+  .gallery { grid-template-columns: 1fr; }
+
+  .photo { min-height: 350px; }
+
+  .marquee { font-size: 17px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">JHI SHOOTS <span>KC®</span></div>
+  <nav>
+    <a href="#work">WORK</a>
+    <a href="#about">ABOUT</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="tag">INDEPENDENT PHOTOGRAPHY ARCHIVE / EST. 2026</div>
+
+  <h1>
+    THE CITY<br>
+    THROUGH<br>
+    MY <span>LENS.</span>
+  </h1>
+
+  <div class="hero-bottom">
+    <p>
+      A collection of moments, places, people and perspectives.
+      Documenting the world one frame at a time.
+    </p>
+    <div class="stamp">NO RULES. JUST PERSPECTIVE.</div>
+  </div>
+</section>
+
+<div class="marquee">
+  PHOTOGRAPHY • CULTURE • PEOPLE • PLACES • PHOTOGRAPHY •
+</div>
+
+<section class="section" id="work">
+  <div class="section-heading">
+    <h2>THE ARCHIVE.</h2>
+    <span>01 — SELECTED WORK</span>
+  </div>
+
+  <div class="gallery">
+
+    <div class="photo">
+      <span class="photo-number">001</span>
+      <span class="empty">YOUR PHOTO GOES HERE</span>
+      <div class="photo-label">STREET
+        <small>STREET PHOTOGRAPHY</small>
+      </div>
+    </div>
+
+    <div class="photo">
+      <span class="photo-number">002</span>
+      <span class="empty">YOUR PHOTO GOES HERE</span>
+      <div class="photo-label">PEOPLE
+        <small>PORTRAITS & PEOPLE</small>
+      </div>
+    </div>
+
+    <div class="photo">
+      <span class="photo-number">003</span>
+      <span class="empty">YOUR PHOTO GOES HERE</span>
+      <div class="photo-label">PLACES
+        <small>ARCHITECTURE & SPACES</small>
+      </div>
+    </div>
+
+    <div class="photo">
+      <span class="photo-number">004</span>
+      <span class="empty">YOUR PHOTO GOES HERE</span>
+      <div class="photo-label">MOMENTS
+        <small>EVENTS & EVERYDAY LIFE</small>
+      </div>
+    </div>
+
+    <div class="photo">
+      <span class="photo-number">005</span>
+      <span class="empty">YOUR PHOTO GOES HERE</span>
+      <div class="photo-label">CULTURE
+        <small>ART & CULTURE</small>
+      </div>
+    </div>
+
+    <div class="photo">
+      <span class="photo-number">006</span>
+      <span class="empty">YOUR PHOTO GOES HERE</span>
+      <div class="photo-label">OTHER
+        <small>PERSONAL COLLECTION</small>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="note">
+  <h2>NOT JUST<br>ANOTHER PICTURE.</h2>
+  <p>
+    Every frame has a story. Every place has a feeling.
+    This is my perspective, documented and archived.
+  </p>
+</section>
+
+<section class="about" id="about">
+  <div class="tag">02 — BEHIND THE CAMERA</div>
+  <h2>THE PERSON<br>BEHIND THE <span>LENS.</span></h2>
+  <p>
+    I'm the photographer behind JHI SHOOTS KC.
+    Through photography, I explore people, places,
+    cultures and the little details that make everyday
+    life worth documenting.
+    <br><br>
+    This archive is a growing collection of my work
+    and the world as I see it.
+  </p>
+</section>
+
+<section class="contact" id="contact">
+  <div class="tag">03 — GET IN TOUCH</div>
+  <h2>LET'S MAKE<br>SOMETHING.</h2>
+  <p>For photography inquiries and collaborations:</p>
+  <a href="mailto:YOUR-EMAIL@example.com">CONTACT ME ↗</a>
+</section>
+
+</main>
+
+<footer>
+  <span>JHI SHOOTS KC®</span>
+  <span>INDEPENDENTLY DOCUMENTED.</span>
+  <span>© 2026</span>
+</footer>
+
+</body>
+</html>
+
