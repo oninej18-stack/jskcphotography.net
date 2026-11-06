@@ -260,6 +260,22 @@ nav a:hover { color: var(--lime); }
   object-fit: cover;
   display: block;
   filter: grayscale(100%);
+} .about-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.about-content p {
+  flex: 1;
+  max-width: 570px;
+}
+
+.about-content .about-photo {
+  flex: 0 0 300px;
+  max-width: 300px;
+  margin-top: 0;
 }
 
 
@@ -426,6 +442,7 @@ footer {
 <section class="about" id="about">
   <div class="tag">02 — BEHIND THE CAMERA</div>
   <h2>THE PERSON<br>BEHIND THE <span>LENS.</span></h2>
+  <div class="about-content">
   <p>
   I'm Jhi'Xe Young, a 17-year-old high school senior 
 and the photographer behind JHI SHOOTS KC.
@@ -450,6 +467,7 @@ and the world as I see it.
   <div class="about-photo">
     <img src="IMG_0560.jpeg" alt="Portrait of Jhi'Xe Young">
   </div>
+    </div> 
 </section>
 <section class="contact" id="contact">
   <div class="tag">03 — GET IN TOUCH</div>
